@@ -1,0 +1,14 @@
+name: Debug MacOS
+on: [workflow_dispatch] # Allows you to trigger it manually
+
+jobs:
+  debug:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # This action sets up tmate and gives you an SSH connection string
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true # Only allow you to connect
