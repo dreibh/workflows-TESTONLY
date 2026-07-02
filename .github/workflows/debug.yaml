@@ -11,9 +11,10 @@ jobs:
       - name: Install custom packages
         run: |
           brew install -y bash cmake figlet gnu-getopt gettext git joe make pwgen wget
+          brew install -y libidn2 libmaxminddb
           brew install -y bison
           brew install -y boost
-          brew install -y ghostscript GraphicsMagick mupdf-tools nss
+          brew install -y exiftool ghostscript GraphicsMagick mupdf-tools nss
 
       # Pre-install some Homebrew packages:
       - name: Clone repositories
