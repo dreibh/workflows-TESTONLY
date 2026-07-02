@@ -6,9 +6,17 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      
-      # This action sets up tmate and gives you an SSH connection string
+
+      # Pre-install some Homebrew packages:
+      - name: Install custom packages
+        run: |
+          brew install -y bash cmake figlet gnu-getopt gettext git joe make pwgen wget
+          brew install -y bison
+          brew install -y boost
+          brew install -y ghostscript GraphicsMagick mupdf-tools nss
+
+      # This action sets up tmate and gives you an SSH connection string:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         with:
-          limit-access-to-actor: true # Only allow you to connect
+          limit-access-to-actor: true   # Only allow you to connect
