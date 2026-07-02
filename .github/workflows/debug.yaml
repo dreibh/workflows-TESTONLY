@@ -1,5 +1,5 @@
 name: Debug MacOS
-on: [workflow_dispatch] # Allows you to trigger it manually
+on: [ workflow_dispatch ]   # Workflow is triggered manually
 
 jobs:
   debug:
@@ -16,7 +16,7 @@ jobs:
           brew install -y boost
           brew install -y exiftool ghostscript GraphicsMagick mupdf-tools nss
 
-      # Pre-install some Homebrew packages:
+      # Clone some repositories:
       - name: Clone repositories
         run: |
           git clone https://dreibh@github.com/dreibh/bibtexconv
@@ -24,6 +24,9 @@ jobs:
           git clone https://dreibh@github.com/dreibh/hipercontracer
           git clone https://dreibh@github.com/dreibh/netperfmeter
           git clone https://dreibh@github.com/dreibh/rsplib
+          git clone https://dreibh@github.com/dreibh/rserpooldemo
+          git clone https://dreibh@github.com/dreibh/sctplib
+          git clone https://dreibh@github.com/dreibh/socketapi
           git clone https://dreibh@github.com/dreibh/subnetcalc
           git clone https://dreibh@github.com/dreibh/system-tools
           git clone https://dreibh@github.com/dreibh/tsctp
