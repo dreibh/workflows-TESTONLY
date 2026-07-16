@@ -15,6 +15,8 @@ jobs:
           brew install -y bison
           brew install -y boost
           brew install -y exiftool ghostscript GraphicsMagick mupdf-tools nss
+          brew install -y python3
+          pip install psutil
 
       # Clone some repositories:
       - name: Clone repositories
