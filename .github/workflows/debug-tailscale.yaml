@@ -1,4 +1,4 @@
-name: Debug MacOS
+name: Debug MacOS via Tailscale
 on: [ workflow_dispatch ]   # Workflow is triggered manually
 
 jobs:

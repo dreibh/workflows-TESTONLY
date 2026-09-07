@@ -1,4 +1,4 @@
-name: Debug MacOS
+name: Debug MacOS via T-Mate
 on: [ workflow_dispatch ]   # Workflow is triggered manually
 
 jobs:
