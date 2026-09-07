@@ -2,7 +2,7 @@ name: Debug MacOS via Tailscale
 on: [ workflow_dispatch ]   # Workflow is triggered manually
 
 jobs:
-  tmate-debug:
+  tailscale-debug:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
@@ -37,13 +37,14 @@ jobs:
       - name: Connect to Tailscale
         uses: tailscale/github-action@v4
         with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
       # Pause the runner for interactive SSH debugging:
       - name: Wait for SSH debugging
         run: |
+          echo "=================================================="
           echo "Tailscale IP: $(tailscale ip -4)"
-          echo "SSH into runner: ssh runner@$(tailscale ip -4)"
+          echo "Connect via SSH using:"
+          echo "  ssh runner@$(tailscale ip -4)"
+          echo "=================================================="
           sleep 86400
