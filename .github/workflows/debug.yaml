@@ -5,7 +5,7 @@ jobs:
   debug:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Pre-install some Homebrew packages:
       - name: Install custom packages
