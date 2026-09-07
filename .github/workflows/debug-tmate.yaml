@@ -2,7 +2,7 @@ name: Debug MacOS
 on: [ workflow_dispatch ]   # Workflow is triggered manually
 
 jobs:
-  debug:
+  tmate-debug:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v7
