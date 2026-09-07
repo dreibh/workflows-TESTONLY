@@ -8,36 +8,40 @@ jobs:
       - uses: actions/checkout@v7
 
       # Pre-install some Homebrew packages:
-      - name: Install custom packages
-        run: |
-          brew install -y autoconf automake bash cmake figlet gnu-getopt gettext git joe libtool make pwgen wget
-          brew install -y libidn2 libmaxminddb
-          brew install -y bison
-          brew install -y boost
-          brew install -y exiftool ghostscript GraphicsMagick mupdf-tools nss
-          brew install -y python3
-          pip install psutil
-
-      # Clone some repositories:
-      - name: Clone repositories
-        run: |
-          git clone https://dreibh@github.com/dreibh/bibtexconv
-          git clone https://dreibh@github.com/dreibh/fractgen
-          git clone https://dreibh@github.com/dreibh/hipercontracer
-          git clone https://dreibh@github.com/dreibh/netperfmeter
-          git clone https://dreibh@github.com/dreibh/rsplib
-          git clone https://dreibh@github.com/dreibh/rserpooldemo
-          git clone https://dreibh@github.com/dreibh/sctplib
-          git clone https://dreibh@github.com/dreibh/socketapi
-          git clone https://dreibh@github.com/dreibh/subnetcalc
-          git clone https://dreibh@github.com/dreibh/system-tools
-          git clone https://dreibh@github.com/dreibh/tsctp
+      # - name: Install custom packages
+      #   run: |
+      #     brew install -y autoconf automake bash cmake figlet gnu-getopt gettext git joe libtool make pwgen wget
+      #     brew install -y libidn2 libmaxminddb
+      #     brew install -y bison
+      #     brew install -y boost
+      #     brew install -y exiftool ghostscript GraphicsMagick mupdf-tools nss
+      #     brew install -y python3
+      #     pip install psutil
+      #
+      # # Clone some repositories:
+      # - name: Clone repositories
+      #   run: |
+      #     git clone https://dreibh@github.com/dreibh/bibtexconv
+      #     git clone https://dreibh@github.com/dreibh/fractgen
+      #     git clone https://dreibh@github.com/dreibh/hipercontracer
+      #     git clone https://dreibh@github.com/dreibh/netperfmeter
+      #     git clone https://dreibh@github.com/dreibh/rsplib
+      #     git clone https://dreibh@github.com/dreibh/rserpooldemo
+      #     git clone https://dreibh@github.com/dreibh/sctplib
+      #     git clone https://dreibh@github.com/dreibh/socketapi
+      #     git clone https://dreibh@github.com/dreibh/subnetcalc
+      #     git clone https://dreibh@github.com/dreibh/system-tools
+      #     git clone https://dreibh@github.com/dreibh/tsctp
 
       # Connect runner to your Tailnet:
       - name: Connect to Tailscale
         uses: tailscale/github-action@v4
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      # Enable Tailscale SSH daemon:
+      - name: Enable Tailscale SSH
+        run: sudo tailscale set --ssh
 
       # Pause the runner for interactive SSH debugging:
       - name: Wait for SSH debugging
