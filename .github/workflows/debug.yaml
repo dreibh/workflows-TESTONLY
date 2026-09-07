@@ -33,8 +33,19 @@ jobs:
           git clone https://dreibh@github.com/dreibh/system-tools
           git clone https://dreibh@github.com/dreibh/tsctp
 
+      - name: Check tmate server reachability
+        run: |
+          nc -z -v -w 5 ssh.tmate.io 22 || echo "Port 22 blocked"
+          nc -z -v -w 5 ssh.tmate.io 443 || echo "Port 443 blocked"
+
       # This action sets up tmate and gives you an SSH connection string:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+        timeout-minutes: 5
         with:
           limit-access-to-actor: true   # Only allow you to connect
+
+      - name: Print tmate logs
+        if: always()
+        run: |
+          cat /tmp/tmate.log || true
