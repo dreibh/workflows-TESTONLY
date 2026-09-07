@@ -21,6 +21,9 @@ jobs:
       # Clone some repositories:
       - name: Clone repositories
         run: |
+          mkdir -p src
+          cd src
+          # Full directory path: /Users/runner/src
           git clone https://dreibh@github.com/dreibh/bibtexconv
           git clone https://dreibh@github.com/dreibh/fractgen
           git clone https://dreibh@github.com/dreibh/hipercontracer
