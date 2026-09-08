@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      Pre-install some Homebrew packages:
+      # Pre-install some Homebrew packages:
       - name: Install custom packages
         run: |
           brew install -y autoconf automake bash cmake figlet gnu-getopt gettext git joe libtool make pwgen wget
